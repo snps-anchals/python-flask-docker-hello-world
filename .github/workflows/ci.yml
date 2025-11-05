@@ -1,22 +1,12 @@
 name: Test Python Hello World CI
-
 on:
   push:
-    branches: main
-  pull_request:
-    branches: main 
-
+    branches: master
 jobs:
   lint:
     name: Run Hello World
     runs-on: self-hosted
-    
     steps:
-
     - name: Install dependencies
       run: |
         echo "Hello World"
-          
-     
-
-    
