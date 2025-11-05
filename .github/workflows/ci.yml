@@ -8,8 +8,8 @@ on:
 
 jobs:
   lint:
-    name: Run PyLint
-    runs-on: ubuntu-latest
+    name: Run Hello World
+    runs-on: self-hosted
     
     steps:
     - name: Check out repository
