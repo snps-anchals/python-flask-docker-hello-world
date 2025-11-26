@@ -1,12 +1,30 @@
-name: Test Python Hello World CI
-on:
-  push:
-    branches: master
-jobs:
-  lint:
-    name: Run Hello World
-    runs-on: self-hosted
-    steps:
-    - name: Install dependencies
-      run: |
-        echo "Hello World"
+name: CI Pipeline with Docker Runner  
+  
+on:  
+  push:  
+    branches:  
+      - main  
+  pull_request:  
+  
+jobs:  
+  build:  
+    # Specify a Docker container as the runner  
+    container:  
+      image: python:3.9-slim  # Use Python 3.9 slim image as the runner environment  
+  
+    steps:  
+      # Step 1: Checkout the code  
+      - name: Checkout Code  
+        uses: actions/checkout@v3  
+  
+      # Step 2: Install dependencies  
+      - name: Install Dependencies  
+        run: |  
+          pip install flask  
+  
+      # Step 3: Run Tests  
+      - name: Run Application  
+        run: |  
+          python app.py &  
+          sleep 5  
+          curl -v http://localhost:5000  
